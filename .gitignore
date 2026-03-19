@@ -1,0 +1,51 @@
+# Rust
+/target/
+Cargo.lock
+**/*.rs.bk
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local configuration and data
+~/.piva/
+*.log
+*.pid
+
+# Backup files
+*_original.toml
+*_backup.*
+
+# Node data
+node_data/
+*.db
+*.sqlite
+*.redb
+
+# Build artifacts
+*.d
+*.so
+*.dylib
+*.dll
+
+# Test artifacts
+*.profraw
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# FrD - Documentation and planning
+FrD/notes/
+FrD/drafts/
+FrD/tmp/
+FrD/

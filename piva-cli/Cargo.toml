@@ -1,0 +1,68 @@
+[package]
+name = "piva-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "piva"
+path = "src/main.rs"
+
+[dependencies]
+piva-core = { path = "../piva-core" }
+piva-storage = { path = "../piva-storage" }
+piva-crypto = { path = "../piva-crypto" }
+piva-net = { path = "../piva-net" }
+
+# CLI and argument parsing
+clap = { workspace = true }
+tokio = { workspace = true }
+
+# Serialization (JSON output)
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Error handling and logging
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+# Time utilities for JSON timestamps
+chrono = { version = "0.4", features = ["serde"] }
+
+# Core cryptography and utilities
+sha2 = "0.10"
+rand = "0.8"
+serde_bytes = "0.11"
+
+# Configuration and utilities
+dirs = { workspace = true }
+toml = { workspace = true }
+
+# Interoperability EVM (no-std compatible)
+alloy-sol-types = { workspace = true }
+hex = { workspace = true }
+base64 = { workspace = true }
+
+# EVM cryptography
+k256 = { workspace = true }
+
+# EVM bridge dependencies
+alloy-primitives = { workspace = true }
+alloy-signer = { workspace = true }
+alloy-signer-local = { workspace = true }
+
+# Identity and key management
+bip39 = "2.0"
+hmac = "0.12"
+pbkdf2 = "0.12"
+
+# Encryption for backup
+chacha20poly1305 = "0.10"
+argon2 = "0.5"
+
+# Solana serialization
+borsh = { workspace = true }

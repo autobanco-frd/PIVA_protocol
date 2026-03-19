@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package piva.core;
+
+// Asset Entry Protocol Buffer Messages
+// Used for inter-node communication and ISO 20022 compatibility
+
+message AssetEntryProto {
+  // Asset ID (SHA-3 of metadata)
+  string id = 1;
+  
+  // Asset metadata
+  AssetMetadataProto metadata = 2;
+  
+  // Content hash (BLAKE3)
+  bytes content_hash = 3;
+  
+  // Content size in bytes
+  uint64 content_size = 4;
+  
+  // Digital signature (Ed25519)
+  bytes signature = 5;
+  
+  // Network mode
+  NetworkModeProto network = 6;
+}
+
+message AssetMetadataProto {
+  // Asset type
+  AssetTypeProto asset_type = 1;
+  
+  // Issuer public key
+  bytes issuer_pubkey = 2;
+  
+  // Creation timestamp (Unix epoch)
+  uint64 created_at = 3;
+  
+  // Description
+  string description = 4;
+  
+  // Custom fields as key-value pairs
+  map<string, string> custom_fields = 5;
+}
+
+message TransferRequest {
+  // Asset ID to transfer
+  string asset_id = 1;
+  
+  // From public key
+  bytes from_pubkey = 2;
+  
+  // To public key
+  bytes to_pubkey = 3;
+  
+  // Digital signature (signed by from_pubkey)
+  bytes signature = 4;
+  
+  // Transfer timestamp
+  uint64 timestamp = 5;
+}
+
+message TransferReceipt {
+  // Transfer ID
+  string transfer_id = 1;
+  
+  // Asset ID
+  string asset_id = 2;
+  
+  // From party details
+  string from_party = 3;
+  string from_account = 4;
+  string from_agent = 5;
+  
+  // To party details
+  string to_party = 6;
+  string to_account = 7;
+  string to_agent = 8;
+  
+  // Amount
+  double amount = 9;
+  string currency = 10;
+}
+
+message NodeAnnouncement {
+  // Node public key
+  bytes node_pubkey = 1;
+  
+  // Network mode
+  NetworkModeProto network = 2;
+  
+  // Node capabilities
+  repeated string capabilities = 3;
+  
+  // Announcement timestamp
+  uint64 timestamp = 4;
+}
+
+// Asset Type enumeration
+enum AssetTypeProto {
+  PROPERTY_TITLE = 0;
+  DIPLOMA = 1;
+  LEGAL_DOCUMENT = 2;
+  COMMERCIAL_OFFER = 3;
+  AUDIO_MUSIC = 4;
+}
+
+// Network Mode enumeration
+enum NetworkModeProto {
+  DEVNET = 0;
+  TESTNET = 1;
+  MAINNET = 2;
+}

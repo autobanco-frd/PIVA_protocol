@@ -1,0 +1,24 @@
+# Cargo configuration for PIVA Protocol
+# Optimized for 512 MB RAM environments
+
+[build]
+# Use a single job to reduce memory usage during compilation
+jobs = 1
+
+[target.x86_64-unknown-linux-gnu]
+# Linker flags for optimized binaries
+rustflags = [
+    "-C", "target-cpu=x86-64",  # Optimize for common x86_64
+    "-C", "link-arg=-Wl,--gc-sections",  # Remove unused code sections
+]
+
+[target.aarch64-unknown-linux-gnu]
+# Optimizations for ARM64 (common in cloud providers)
+rustflags = [
+    "-C", "target-cpu=generic", 
+    "-C", "link-arg=-Wl,--gc-sections",
+]
+
+[env]
+# Default to release mode for builds unless explicitly overridden
+CARGO_PROFILE_RELEASE = "1"

@@ -1,0 +1,28 @@
+[package]
+name = "piva-net"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+piva-core = { path = "../piva-core" }
+piva-crypto = { path = "../piva-crypto" }
+redb = { workspace = true }
+iroh = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+bytes = "1.5"
+hex.workspace = true
+bao = "0.12"
+rand = "0.8"
+base64 = "0.22"
+bincode = { workspace = true }
+serde_bytes = "0.11"
+
+[dev-dependencies]
+tempfile = "3.8"
