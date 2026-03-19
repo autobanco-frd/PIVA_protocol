@@ -243,9 +243,12 @@ pub async fn handle_evm_sign(
 ) -> Result<()> {
     info!("EVM bridge signing for calldata");
     
-    // For demo, use placeholder private key
+    // For demo, generate ephemeral private key
     // In production, this would come from identity storage
-    let private_key = [1u8; 32];
+    let mut rng = rand::rngs::OsRng;
+    let private_key = k256::ecdsa::SigningKey::random(&mut rng)
+        .to_bytes()
+        .into();
     
     // Create bridge manager
     let bridge = EvmBridgeManager::new("devnet", "0x1234567890123456789012345678901234567890")?;

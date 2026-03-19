@@ -92,6 +92,4 @@ ps -o rss= -p $!  # Debe ser < 50MB en Devnet
 
 MIT OR Apache-2.0
 
-## Contribuciones
-
-Ver [IMPLEMENTACION.md](./implementacion.md) para el plan detallado de sprints.
+by FrD @autobanco

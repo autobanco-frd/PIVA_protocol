@@ -19,6 +19,12 @@ Thumbs.db
 *.log
 *.pid
 
+# Secretos y Config (CRÍTICO)
+.env
+*.pem
+*.key
+config_local.toml
+
 # Backup files
 *_original.toml
 *_backup.*
